@@ -6,7 +6,7 @@ Main application
 from models.client import Client
 from models.invoice import Invoice
 from models.product import Product
-from database.connection import DAO
+#from database.connection import DAO
 import os
 
 
@@ -42,11 +42,11 @@ Your option: """))
 
 def option_handler(option):
     """ Function that handles to user option """
-    dao = DAO()
+    client = Client()
 
     if option == 1:
         try:
-            get_clients = dao.get_clients()
+            get_clients = client.get_all_clients()
             if len(get_clients) > 0:
                 print(get_clients)
             else:
