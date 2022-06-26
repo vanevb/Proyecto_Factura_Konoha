@@ -1,3 +1,7 @@
+import client
+import product
+import invoice
+
 def main():
     pass
 
