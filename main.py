@@ -7,7 +7,7 @@ from models.client import Client
 from models.invoice import Invoice
 from models.product import Product
 from services.show_data import show_data_from_db
-from services.new_client_form import capture_client_data
+from services.forms import capture_client_data
 import os
 
 
@@ -67,7 +67,20 @@ def client_handler(option):
     elif option == 3:
         print("Update")
     elif option == 4:
-        print("Delete")
+        """ Delete """
+        try:
+            get_clients = client.get_all_clients()
+            if len(get_clients) > 0:
+                show_data_from_db(get_clients)
+                delete_client = int(input("Enter client id to delete: "))
+                if delete_client != "":
+                    client.delete_client(delete_client)
+                else:
+                    print("Invalid client id")
+            else:
+                print("Clients not found")
+        except Exception as e:
+            print(e)
 
 
 if __name__ == "__main__":
