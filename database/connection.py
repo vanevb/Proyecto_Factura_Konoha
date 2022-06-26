@@ -11,6 +11,7 @@ from mysql.connector import Error
 # sudo mysql -uroot -p
 # mysqldump -u root -p invoice > invoice.sql
 
+
 class DAO():
     """ Connection class """
 
@@ -26,14 +27,3 @@ class DAO():
             )
         except Error as e:
             print(f"An error occurred while connecting to mysql: {e}")
-
-    def get_clients(self):
-        """ Get all clientes """
-        if self.connection.is_connected():
-            try:
-                cursor = self.connection.cursor()
-                cursor.execute("SELECT * from client")
-                res = cursor.fetchall()
-                return res
-            except Error as e:
-                print(f"An error occurred while retrieve data: {e}")
