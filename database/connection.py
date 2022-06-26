@@ -9,7 +9,7 @@ from mysql.connector import Error
 # sudo /etc/init.d/mysql start
 # sudo service --status-all
 # sudo mysql -uroot -p
-
+# mysqldump -u root -p invoice > invoice.sql
 
 class DAO():
     """ Connection class """
