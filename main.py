@@ -6,7 +6,8 @@ Main application
 from models.client import Client
 from models.invoice import Invoice
 from models.product import Product
-#from database.connection import DAO
+from services.show_data import show_data_from_db
+from services.new_client_form import capture_client_data
 import os
 
 
@@ -34,27 +35,35 @@ Your option: """))
                 print("\n=> See you later.")
                 run = False
             else:
-                option_handler(option)
+                os.system("clear")
+                client_handler(option)
         except ValueError:
             os.system("clear")
             print("Option must be an integer")
 
 
-def option_handler(option):
+def client_handler(option):
     """ Function that handles to user option """
     client = Client()
 
     if option == 1:
+        """ Get """
         try:
             get_clients = client.get_all_clients()
             if len(get_clients) > 0:
-                print(get_clients)
+                show_data_from_db(get_clients)
             else:
                 print("Clients not found")
         except Exception as e:
             print(e)
     elif option == 2:
-        print("Create")
+        """ Create """
+        try:
+            data = capture_client_data()
+            client.create_new_client(
+                data[0], data[1], data[2], data[3], data[4])
+        except Exception as e:
+            print(e)
     elif option == 3:
         print("Update")
     elif option == 4:

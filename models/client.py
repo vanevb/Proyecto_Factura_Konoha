@@ -14,14 +14,6 @@ class Client(DAO):
         """ Inherit connection """
         super().__init__()
 
-    # def __init__(self, name_client: str, nit_cc: int, address: str, phone: int, email: str):
-    #     super().__init__()
-    #     self.name_client = name_client
-    #     self.nit_cc = nit_cc
-    #     self.address = address
-    #     self.phone = phone
-    #     self.email = email
-
     def get_all_clients(self):
         """ Get all clientes """
         if self.connection.is_connected():
@@ -32,3 +24,15 @@ class Client(DAO):
                 return res
             except Error as e:
                 print(f"An error occurred while retrieve data: {e}")
+
+    def create_new_client(self, name_client, nit_cc, address, phone, email):
+        """ Create new client """
+        if self.connection.is_connected():
+            try:
+                cursor = self.connection.cursor()
+                sql = f"INSERT INTO client (name, nit, address, phone, email) VALUES ('{name_client}', '{nit_cc}', '{address}', '{phone}', '{email}')"
+                cursor.execute(sql)
+                self.connection.commit()
+                print("\n=> Client created successfully")
+            except Error as e:
+                print(f"An error occurred while creating the client: {e}")
