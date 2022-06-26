@@ -6,6 +6,10 @@ DAO model
 import mysql.connector
 from mysql.connector import Error
 
+# sudo /etc/init.d/mysql start
+# sudo service --status-all
+# sudo mysql -uroot -p
+
 
 class DAO():
     """ Connection class """
@@ -18,7 +22,7 @@ class DAO():
                 port=3306,
                 user='root',
                 password='root',
-                db='billing'
+                db='invoice'
             )
         except Error as e:
             print(f"An error occurred while connecting to mysql: {e}")
@@ -27,7 +31,7 @@ class DAO():
         """ Get all clientes """
         if self.connection.is_connected():
             try:
-                cursor = self.conn.cursor()
+                cursor = self.connection.cursor()
                 cursor.execute("SELECT * from client")
                 res = cursor.fetchall()
                 return res
