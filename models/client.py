@@ -36,3 +36,15 @@ class Client(DAO):
                 print("\n=> Client created successfully")
             except Error as e:
                 print(f"An error occurred while creating the client: {e}")
+
+    def delete_client(self, id):
+        """ Delete client by id """
+        if self.connection.is_connected():
+            try:
+                cursor = self.connection.cursor()
+                sql = f"DELETE FROM client WHERE id = '{id}'"
+                cursor.execute(sql)
+                self.connection.commit()
+                print("\n=> Client deleted successfully")
+            except Error as e:
+                print(f"An error occurred while deleting the client: {e}")
