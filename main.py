@@ -24,6 +24,7 @@ def main():
 2. Create new client
 3. Update client information
 4. Delete client
+5. Create new invoice
 5. Quit
 
 Your option: """))

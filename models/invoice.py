@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 """
-Invoce model
+Invoice model
 """
 
 from datetime import datetime
+from mysql.connector import Error
+from database.connection import DAO
+from client import Client
 
-
-class Invoice():
+class Invoice(DAO):
     """ Invoice class """
-
-    def __init__(self, name_client: str, nit_cc: int, product: str, quantity: int, cost: float, iva: float, date: datetime):
+    
+    def __init__(self):
+        """ Inherit connection """
+        super().__init__()
+        
+    def create_new_invoice(self, name_client, nit_cc, product, quantity, cost, iva, date):
         self.name_client = name_client
         self.nit_cc = nit_cc
         self.product = product
@@ -17,3 +23,4 @@ class Invoice():
         self.cost = cost
         self.iva = iva
         self.date = date
+    
