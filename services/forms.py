@@ -18,7 +18,7 @@ def capture_product_data():
     """ Capture new product data """
     print("=> Create new product: \n")
     name_product = str(input("Product name : "))
-    unit_value = str(input("Unit Value: "))
+    unit_value = int(input("Unit Value: "))
     ref = int(input("Ref: "))
     return [name_product, unit_value, ref]
 

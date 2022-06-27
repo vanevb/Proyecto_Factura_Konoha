@@ -42,19 +42,19 @@ class Product (DAO):
         if self.connection.is_connected():
             try:
                 cursor = self.connection.cursor()
-                sql = f"UPDATE INTO products (name_product, price, ref) VALUES ('{name_product}', '{unit_value}', '{ref}')"
+                sql = f"UPDATE INTO products (name_product, unit_value, ref) VALUES ('{name_product}', '{unit_value}', '{ref}')"
                 cursor.execute(sql)
                 self.connection.commit()
                 print("\n=> Product update successfully")
             except Error as e:
                 print(f"An error occurred while update the product: {e}")
                 
-    def delete_product(self, id):
-        """ Delete product by id """
+    def delete_product(self, name_product:str):
+        """ Delete product by name """
         if self.connection.is_connected():
             try:
                 cursor = self.connection.cursor()
-                sql = f"DELETE FROM product WHERE id = '{id}'"
+                sql = f"DELETE FROM product WHERE name_product = '{name_product}'"
                 cursor.execute(sql)
                 self.connection.commit()
                 print("\n=> Product deleted successfully")
