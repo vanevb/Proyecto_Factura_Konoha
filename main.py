@@ -18,15 +18,15 @@ def main():
     while run:
         try:
             option = int(input("""
-=== Welcome to Invoicing System ==
+            === Welcome to Invoicing System ==
 
-1. Get all clients
-2. Create new client
-3. Update client information
-4. Delete client
-5. Quit
+            1. Get all clients
+            2. Create new client
+            3. Update client information
+            4. Delete client
+            5. Quit
 
-Your option: """))
+            Your option: """))
 
             if option < 1 or option > 5:
                 os.system("clear")
