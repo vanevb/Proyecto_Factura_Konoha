@@ -37,8 +37,17 @@ class Product (DAO):
             except Error as e:
                 print(f"An error occurred while creating the product: {e}")
                 
-    def update_product():
-        pass
+    def update_product(self, name_product: str, unit_value: int, ref: int):
+        """Update product"""
+        if self.connection.is_connected():
+            try:
+                cursor = self.connection.cursor()
+                sql = f"UPDATE INTO products (name_product, price, ref) VALUES ('{name_product}', '{unit_value}', '{ref}')"
+                cursor.execute(sql)
+                self.connection.commit()
+                print("\n=> Product update successfully")
+            except Error as e:
+                print(f"An error occurred while update the product: {e}")
                 
     def delete_product(self, id):
         """ Delete product by id """
