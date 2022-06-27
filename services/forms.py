@@ -13,3 +13,12 @@ def capture_client_data():
     phone = str(input("Phone: "))
     email = str(input("Email: "))
     return [name, cc, address, phone, email]
+
+def capture_product_data():
+    """ Capture new product data """
+    print("=> Create new product: \n")
+    name_product = str(input("Product name : "))
+    price = str(input("Price: "))
+    ref = int(input("Ref: "))
+    return [name_product, price, ref]
+
