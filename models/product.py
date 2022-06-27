@@ -25,12 +25,12 @@ class Product (DAO):
             except Error as e:
                 print(f"An error occurred while retrieve data: {e}")
     
-    def create_new_product(self, name_product: str, price: int, ref: int):
+    def create_new_product(self, name_product: str, unit_value: int, ref: int):
         """ Create new product """
         if self.connection.is_connected():
             try:
                 cursor = self.connection.cursor()
-                sql = f"INSERT INTO products (name_product, price, ref) VALUES ('{name_product}', '{price}', '{ref}')"
+                sql = f"INSERT INTO products (name_product, price, ref) VALUES ('{name_product}', '{unit_value}', '{ref}')"
                 cursor.execute(sql)
                 self.connection.commit()
                 print("\n=> Product created successfully")
