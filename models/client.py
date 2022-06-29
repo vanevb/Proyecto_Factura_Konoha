@@ -37,6 +37,18 @@ class Client(DAO):
             except Error as e:
                 print(f"An error occurred while creating the client: {e}")
 
+    def update_client(self, update_client: int, name_client: str, nit: str, address: str, phone: str, email: str):
+        """ Update product """
+        if self.connection.is_connected():
+            try:
+                cursor = self.connection.cursor()
+                sql = f"UPDATE client SET name = '{name_client}', nit = '{nit}', address = '{address}', phone = '{phone}', email = '{email}' WHERE id = {update_client}"
+                cursor.execute(sql)
+                self.connection.commit()
+                print("\n=> Client update successfully")
+            except Error as e:
+                print(f"An error occurred while update the client: {e}")
+
     def delete_client(self, id):
         """ Delete client by id """
         if self.connection.is_connected():
