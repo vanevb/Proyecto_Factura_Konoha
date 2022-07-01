@@ -1,7 +1,8 @@
 # Proyecto Factura Konoha - Top Gun Lab 2022
-Nombre: Vanessa Vásquez Balbin
-        Manuel Alejandro Gómez
-        Sebastian Naranjo Torres
+
+###Nombre: Vanessa Vásquez Balbin
+           Manuel Alejandro Gómez
+           Sebastian Naranjo Torres
 
 
 
