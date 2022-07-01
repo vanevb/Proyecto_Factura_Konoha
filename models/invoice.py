@@ -24,6 +24,18 @@ class Invoice(DAO):
                 return invoice_result
             except Error as e:
                 print(f"An error occurred while retrieve data: {e}")
+    
+    def get_invoice(self, id:int):
+        """Get invoice by id"""
+        if self.connection.is_connected():
+            try:
+                cursor = self.connection.cursor()
+                sql = f"SELECT FROM invoice WHERE id = '{id}'"
+                cursor.execute(sql)
+                invoice_result = cursor.fetchall()
+                return invoice_result                
+            except Error as e:
+                print(f"An error occurred while retrieve data: {e}")
                 
     def create_new_invoice(self, client_id: int, product_id: int, quantity: int, total_value: int):
         """ Create new invoice"""
